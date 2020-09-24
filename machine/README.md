@@ -8,7 +8,7 @@ Step at the moment is still very beta, and its API will likely change more befor
 
 Some of the TODOs left for the library are:
 
-1. Support for Parallel States
-1. Better Validations e.g. making sure all states are reachable and executable
 1. Client side visualization of state machine and execution using GraphViz
+2. Intrinsic function support
+3. At question is how builds effective Input base on Input & Params (must check, test and correct if needed)
 
