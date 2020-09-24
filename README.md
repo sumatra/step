@@ -2,7 +2,10 @@
 
 <img align="right" src="./assets/one_small_step_for_gopher.png" alt="One Small Step for Go"/>
 
-Step is a opinionated implementation of the [AWS State Machine language](./STATE_SPEC.md) in [Go](https://golang.org/) used to build and test [AWS Step Functions](https://docs.aws.amazon.com/step-functions/latest/dg/getting-started.html) and [Lambdas](https://docs.aws.amazon.com/lambda/latest/dg/getting-started.html). Step combines the **Structure** of a state machine with the **Code** of a lambda so that the two can be developed, tested and maintained together.
+Step is a opinionated implementation of the [AWS State Machine language](./STATE_SPEC.md) in [Go](https://golang.org/) used to build and test [AWS Step Functions](https://docs.aws.amazon.com/step-functions/latest/dg/getting-started.html) and [Lambdas](https://docs.aws.amazon.com/lambda/latest/dg/getting-started.html). Step combines the **Structure** of a state machine with the **Code** of a lambda so that the two can be developed, tested and maintained together. OFFICIALLY Step support is over (repository was archived) HO=owever in this fork it was implemented:
+
+* Parrallel state support
+* Checking that all stated=s are reachable
 
 The three core components of Step are:
 
