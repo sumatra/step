@@ -16,10 +16,14 @@ type ParallelState struct {
 	End *bool`json:",omitempty"`
 	Branches []StateMachine
 
+	Parameters interface{} `json:",omitempty"`
+
 	InputPath  *jsonpath.Path `json:",omitempty"`
 	OutputPath *jsonpath.Path `json:",omitempty"`
 	ResultPath *jsonpath.Path `json:",omitempty"`
-	Parameters interface{} `json:",omitempty"`
+
+	Catch []*Catcher `json:",omitempty"`
+	Retry []*Retrier `json:",omitempty"`
 }
 
 type BranchExecution struct {
@@ -49,6 +53,7 @@ func (s *ParallelState) Execute(_ context.Context, input interface{}) (output in
 		}(i, b)
 	}
 	awaiter.Wait()
+
 	return outData, s.Next, nil
 }
 
