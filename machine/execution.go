@@ -3,14 +3,14 @@ package machine
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/aws/aws-sdk-go-v2/service/sfn/types"
 	"time"
 
-	"github.com/aws/aws-sdk-go/service/sfn"
 	"github.com/coinbase/step/utils/to"
 )
 
 type HistoryEvent struct {
-	sfn.HistoryEvent
+	types.HistoryEvent
 }
 
 type Execution struct {
@@ -84,8 +84,8 @@ func (sm *Execution) Path() []string {
 func createEvent(name string) HistoryEvent {
 	t := time.Now()
 	return HistoryEvent{
-		sfn.HistoryEvent{
-			Type:      to.Strp(name),
+		types.HistoryEvent{
+			Type:      types.HistoryEventType(name),
 			Timestamp: &t,
 		},
 	}
@@ -99,7 +99,7 @@ func createEnteredEvent(state State, input interface{}) HistoryEvent {
 		json_raw = []byte{}
 	}
 
-	event.StateEnteredEventDetails = &sfn.StateEnteredEventDetails{
+	event.StateEnteredEventDetails = &types.StateEnteredEventDetails{
 		Name:  state.Name(),
 		Input: to.Strp(string(json_raw)),
 	}
@@ -115,7 +115,7 @@ func createExitedEvent(state State, output interface{}) HistoryEvent {
 		json_raw = []byte{}
 	}
 
-	event.StateExitedEventDetails = &sfn.StateExitedEventDetails{
+	event.StateExitedEventDetails = &types.StateExitedEventDetails{
 		Name:   state.Name(),
 		Output: to.Strp(string(json_raw)),
 	}

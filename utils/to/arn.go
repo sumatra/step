@@ -3,10 +3,10 @@ package to
 import (
 	"context"
 	"fmt"
+	"github.com/aws/aws-sdk-go-v2/aws/arn"
 	"strings"
 
 	"github.com/aws/aws-lambda-go/lambdacontext"
-	"github.com/aws/aws-sdk-go/aws/arn"
 )
 
 // LambdaArn takes a name OR arn and returns Arn defaulting to AWS Environment variables
